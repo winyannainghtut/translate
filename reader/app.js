@@ -37,6 +37,7 @@
     openSidebarBtn: document.getElementById("openSidebarBtn"),
     toggleSettingsBtn: document.getElementById("toggleSettingsBtn"),
     chapterList: document.getElementById("chapterList"),
+    settingsPanel: document.getElementById("settingsPanel"),
     sourceFilter: document.getElementById("sourceFilter"),
     libraryMeta: document.getElementById("libraryMeta"),
     searchInput: document.getElementById("searchInput"),
@@ -59,6 +60,7 @@
   init();
 
   async function init() {
+    document.body.classList.add("js-ready");
     bindEvents();
     setSettingsPanelOpen(false);
     hydrateSettingsControls();
@@ -115,7 +117,7 @@
 
     if (els.toggleSettingsBtn) {
       els.toggleSettingsBtn.addEventListener("click", () => {
-        const isOpen = document.body.classList.contains("settings-open");
+        const isOpen = els.settingsPanel?.classList.contains("is-open");
         setSettingsPanelOpen(!isOpen);
       });
     }
@@ -347,10 +349,13 @@
   }
 
   function setSettingsPanelOpen(isOpen) {
-    document.body.classList.toggle("settings-open", isOpen);
+    if (els.settingsPanel) {
+      els.settingsPanel.classList.toggle("is-open", Boolean(isOpen));
+    }
     if (!els.toggleSettingsBtn) return;
-    els.toggleSettingsBtn.setAttribute("aria-expanded", String(isOpen));
-    els.toggleSettingsBtn.textContent = isOpen ? "Hide Settings" : "Settings";
+    const expanded = Boolean(isOpen);
+    els.toggleSettingsBtn.setAttribute("aria-expanded", String(expanded));
+    els.toggleSettingsBtn.textContent = expanded ? "Hide Settings" : "Settings";
   }
 
   function applyTheme() {

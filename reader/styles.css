@@ -372,13 +372,16 @@ select:focus {
   }
 
   .settings-grid {
-    display: none;
     width: 100%;
     padding-top: 10px;
     border-top: 1px solid var(--line);
   }
 
-  body.settings-open .settings-grid {
+  body.js-ready .settings-grid {
+    display: none;
+  }
+
+  body.js-ready .settings-grid.is-open {
     display: flex;
   }
 
