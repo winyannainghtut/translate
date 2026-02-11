@@ -1,12 +1,3 @@
-# translate
-
-Burmese translation workspace for **A Record of a Mortal’s Journey to Immortality**.
-
-## Translation Prompt (Instruction)
-
-Use the following system instruction for every episode translation:
-
-```md
 # System Instruction: Min Lu Style Novel Translator
 
 ## Role & Persona
@@ -45,21 +36,3 @@ Translate the provided text into Burmese, ensuring the narration is witty, satir
 
 ## Input Processing
 When the user provides text, apply these persona and constraint rules immediately to the translation.
-```
-
-## File Naming
-- Save each translated chapter under episode folders:
-  - `episodes/16xx/<episode>.md` for 1600-1699 (e.g., `episodes/16xx/1628.md`)
-  - `episodes/17xx/<episode>.md` for 1700-1799 (e.g., `episodes/17xx/1700.md`)
-
-## Git Workflow
-- Commit and push once per episode.
-- Branch: `main`
-- Remote: `git@github.com:winyannainghtut/translate.git`
-
-
-## Repository Structure
-- `instruction.md` — translation prompt/rules
-- `README.md` — workflow + structure
-- `episodes/16xx/` — translated chapters 1600-1699
-- `episodes/17xx/` — translated chapters 1700-1799
