@@ -22,6 +22,7 @@
   };
 
   const state = {
+    sources: [],
     entries: [],
     visibleEntries: [],
     currentId: null,
@@ -147,6 +148,7 @@
       }
 
       const payload = await response.json();
+      state.sources = Array.isArray(payload.sources) ? payload.sources : [];
       state.entries = Array.isArray(payload.entries) ? payload.entries : [];
       els.libraryMeta.textContent = `${state.entries.length} chapters indexed`;
 
@@ -175,7 +177,9 @@
   }
 
   function renderSourceFilter() {
-    const sources = [...new Set(state.entries.map((entry) => entry.sourceLabel))];
+    const sources = state.sources.length
+      ? state.sources
+      : [...new Set(state.entries.map((entry) => entry.sourceLabel))];
     els.sourceFilter.innerHTML = "";
 
     const allButton = buildFilterChip("All", "all", state.settings.source === "all");
