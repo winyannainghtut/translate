@@ -94,6 +94,20 @@ body {
   grid-template-columns: 320px 1fr;
   gap: 16px;
   padding: 16px;
+  transition: grid-template-columns 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.sidebar-hidden .app-shell {
+  grid-template-columns: 0px 1fr;
+  gap: 0;
+}
+
+body.sidebar-hidden .sidebar {
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
 }
 
 .sidebar,
@@ -123,8 +137,15 @@ body {
 }
 
 @keyframes shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .sidebar-top {
@@ -163,30 +184,11 @@ body {
   font-size: 0.85rem;
 }
 
-.search-input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-icon {
-  position: absolute;
-  left: 10px;
-  color: var(--muted);
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
-.search-input-wrap input {
-  width: 100%;
-  padding-left: 32px;
-}
-
 .search-wrap input,
 select {
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 9px 10px;
+  padding: 9px 12px;
   background: var(--surface-strong);
   color: var(--text);
   font: inherit;
@@ -577,22 +579,22 @@ select:focus {
   border-color: var(--accent);
 }
 
-/* ========== Mobile Only ========== */
-.mobile-only {
+/* ========== Settings panel — hidden by default, toggle with JS ========== */
+body.js-ready .settings-grid {
   display: none;
 }
 
-/* ========== Mobile Responsive ========== */
+body.js-ready .settings-grid.is-open {
+  display: flex;
+}
+
 @media (max-width: 980px) {
   .app-shell {
     grid-template-columns: 1fr;
     padding: 12px;
   }
 
-  .mobile-only {
-    display: inline-flex;
-  }
-
+  /* On mobile, sidebar is always a fixed overlay */
   .sidebar {
     position: fixed;
     left: 12px;
@@ -602,10 +604,23 @@ select:focus {
     z-index: 40;
     transform: translateX(-108%);
     transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   body.sidebar-open .sidebar {
     transform: translateX(0);
+  }
+
+  /* Override desktop sidebar-hidden behavior on mobile */
+  body.sidebar-hidden .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  body.sidebar-hidden .sidebar {
+    opacity: 1;
+    pointer-events: auto;
+    overflow: hidden;
   }
 
   .reader-panel {
@@ -614,20 +629,6 @@ select:focus {
 
   .toolbar {
     gap: 10px;
-  }
-
-  .settings-grid {
-    width: 100%;
-    padding-top: 10px;
-    border-top: 1px solid var(--line);
-  }
-
-  body.js-ready .settings-grid {
-    display: none;
-  }
-
-  body.js-ready .settings-grid.is-open {
-    display: flex;
   }
 
   .settings-grid label {

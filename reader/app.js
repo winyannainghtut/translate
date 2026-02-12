@@ -123,12 +123,20 @@
     });
 
     els.openSidebarBtn.addEventListener("click", () => {
-      document.body.classList.add("sidebar-open");
+      if (isMobile()) {
+        document.body.classList.add("sidebar-open");
+      } else {
+        document.body.classList.remove("sidebar-hidden");
+      }
       setSettingsPanelOpen(false);
     });
 
     els.closeSidebarBtn.addEventListener("click", () => {
-      document.body.classList.remove("sidebar-open");
+      if (isMobile()) {
+        document.body.classList.remove("sidebar-open");
+      } else {
+        document.body.classList.add("sidebar-hidden");
+      }
     });
 
     if (els.toggleSettingsBtn) {
@@ -188,7 +196,11 @@
           break;
         case "Escape":
           e.preventDefault();
-          document.body.classList.toggle("sidebar-open");
+          if (isMobile()) {
+            document.body.classList.toggle("sidebar-open");
+          } else {
+            document.body.classList.toggle("sidebar-hidden");
+          }
           break;
       }
     });
@@ -642,5 +654,9 @@
     if (!active) return false;
     const tag = active.tagName.toLowerCase();
     return tag === "input" || tag === "textarea" || tag === "select" || active.isContentEditable;
+  }
+
+  function isMobile() {
+    return window.innerWidth <= 980;
   }
 })();
