@@ -1,10 +1,14 @@
-# translate
+# A Record of a Mortal’s Journey to Immortality (Burmese Translation Project)
 
-Burmese translation workspace for novel episodes, with a built-in markdown reader web app.
+This repository focuses on translating **A Record of a Mortal’s Journey to Immortality** into Burmese.
+
+## About the Novel
+
+**A Record of a Mortal’s Journey to Immortality** is a long-running Xianxia cultivation novel following **Han Li**, a mortal with ordinary talent who survives through caution, intelligence, and relentless cultivation in a dangerous world of Sects, Dao paths, and high-level experts.
 
 ## Translation Prompt (Current)
 
-Use this instruction for episode translation work:
+Use this exact instruction for translation work:
 
 ```md
 System Instruction: Xianxia Novel Translator
@@ -50,62 +54,3 @@ Do NOT translate these terms. Keep them in English:
 ```
 
 Source reference: `instruction.md`
-
-## Repository Structure
-
-- `instruction.md` - translation rules/prompt
-- `auto_translate.py` - translation helper script
-- `Eng/` - English episode markdown files
-- `episodes/` - Burmese translated episodes
-- `reader/` - local novel reader web app
-- `.github/workflows/deploy-pages.yml` - GitHub Pages deployment workflow
-
-## Local Reader (Modern Web UI)
-
-The reader supports:
-- light/dark/system theme
-- font family, font size, line height, and text width controls
-- source filters (`Eng`, `episodes`)
-- chapter search
-- previous/next navigation
-- saved reader settings and scroll progress
-
-Run locally from repo root:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\reader\run_reader.ps1
-```
-
-Open:
-
-`http://localhost:8000/reader/`
-
-If markdown files are added/removed, regenerate the manifest:
-
-```powershell
-python .\reader\generate_manifest.py
-```
-
-## GitHub Pages Deployment
-
-This repo includes an Actions workflow that deploys the reader to GitHub Pages.
-
-Workflow file:
-
-`/.github/workflows/deploy-pages.yml`
-
-It will:
-1. Checkout repository
-2. Generate `reader/manifest.json`
-3. Build a Pages artifact containing `reader`, `Eng`, and `episodes`
-4. Deploy to GitHub Pages
-
-### One-time GitHub setup
-
-1. Go to repository `Settings > Pages`
-2. Under `Build and deployment`, set `Source` to `GitHub Actions`
-3. Push to `main` (or `master`) to trigger deployment
-
-After deploy, open:
-
-`https://<your-username>.github.io/<repo-name>/reader/`
