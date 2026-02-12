@@ -11,7 +11,7 @@
   const SYSTEM_THEME_QUERY = window.matchMedia("(prefers-color-scheme: dark)");
 
   const defaultSettings = {
-    theme: "system",
+    theme: "sepia",
     font: "serif",
     fontSize: 19,
     lineHeight: 1.75,
@@ -49,7 +49,6 @@
     chapterList: document.getElementById("chapterList"),
     settingsPanel: document.getElementById("settingsPanel"),
     sourceFilter: document.getElementById("sourceFilter"),
-    libraryMeta: document.getElementById("libraryMeta"),
     searchInput: document.getElementById("searchInput"),
     prevBtn: document.getElementById("prevBtn"),
     nextBtn: document.getElementById("nextBtn"),
@@ -217,7 +216,6 @@
       const payload = await response.json();
       state.sources = Array.isArray(payload.sources) ? payload.sources : [];
       state.entries = Array.isArray(payload.entries) ? payload.entries : [];
-      els.libraryMeta.textContent = `${state.entries.length} chapters indexed`;
 
       renderSourceFilter();
       renderChapterList();
@@ -237,7 +235,6 @@
         await openChapter(initialChapter);
       }
     } catch (error) {
-      els.libraryMeta.textContent = "Failed to load chapter index";
       els.chapterInfo.textContent = String(error.message || error);
       els.content.innerHTML = `<p class="empty-state">Run <code>python reader/generate_manifest.py</code> then reload.</p>`;
     }
@@ -333,12 +330,7 @@
       title.className = "chapter-title";
       title.textContent = entry.title;
 
-      const path = document.createElement("div");
-      path.className = "chapter-path";
-      path.textContent = entry.path;
-
       info.appendChild(title);
-      info.appendChild(path);
 
       const indicators = document.createElement("div");
       indicators.className = "chapter-indicators";
@@ -418,7 +410,7 @@
 
   function setChapterMeta(entry, detail) {
     els.chapterTitle.textContent = entry ? entry.title : "Select a chapter";
-    els.chapterInfo.textContent = entry ? `${entry.sourceLabel} · ${entry.path} · ${detail}` : detail;
+    els.chapterInfo.textContent = detail;
   }
 
   /* ====== Navigation ====== */
