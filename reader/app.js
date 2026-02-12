@@ -388,9 +388,7 @@
       });
 
       els.content.innerHTML = DOMPurify.sanitize(rendered);
-      const words = countWords(markdown);
-      const minutes = Math.max(1, Math.round(words / 220));
-      setChapterMeta(entry, `${words.toLocaleString()} words · ~${minutes} min read`);
+      setChapterMeta(entry);
 
       requestAnimationFrame(() => {
         const savedTop = Number(state.progress[chapterId] || 0);
@@ -408,9 +406,9 @@
     }
   }
 
-  function setChapterMeta(entry, detail) {
+  function setChapterMeta(entry) {
     els.chapterTitle.textContent = entry ? entry.title : "Select a chapter";
-    els.chapterInfo.textContent = detail;
+    els.chapterInfo.textContent = "";
   }
 
   /* ====== Navigation ====== */
@@ -592,9 +590,6 @@
     return `../${safePath}`;
   }
 
-  function countWords(text) {
-    return (text.trim().match(/\S+/g) || []).length;
-  }
 
   function readJSON(key, fallback) {
     try {
