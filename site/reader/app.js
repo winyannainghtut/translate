@@ -18,7 +18,10 @@
   const fontMap = {
     serif: "'Source Serif 4', Georgia, serif",
     friendly: "'Atkinson Hyperlegible', 'Segoe UI', sans-serif",
-    classic: "'Alegreya', Georgia, serif"
+    classic: "'Alegreya', Georgia, serif",
+    myanmarSerif: "'Noto Serif Myanmar', 'Padauk', 'Myanmar Text', 'Pyidaungsu', 'Noto Sans Myanmar', serif",
+    myanmarSans: "'Noto Sans Myanmar', 'Padauk', 'Myanmar Text', 'Pyidaungsu', 'Atkinson Hyperlegible', sans-serif",
+    myanmarPadauk: "'Padauk', 'Noto Sans Myanmar', 'Myanmar Text', 'Pyidaungsu', sans-serif"
   };
 
   const state = {
