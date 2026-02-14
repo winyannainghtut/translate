@@ -33,45 +33,54 @@
 
     <main class="reader-panel" id="readerPanel">
       <header class="toolbar">
-        <div class="toolbar-group">
-          <button class="icon-btn mobile-only" id="openSidebarBtn" type="button">Library</button>
-          <button class="icon-btn" id="prevBtn" type="button">Previous</button>
-          <button class="icon-btn" id="nextBtn" type="button">Next</button>
+        <div class="toolbar-row toolbar-primary">
+          <div class="toolbar-group">
+            <button class="icon-btn mobile-only" id="openSidebarBtn" type="button">Library</button>
+            <button class="icon-btn" id="prevBtn" type="button">Previous</button>
+            <button class="icon-btn" id="nextBtn" type="button">Next</button>
+          </div>
         </div>
 
-        <div class="toolbar-group settings-grid">
-          <label for="themeSelect">
-            Theme
-            <select id="themeSelect">
-              <option value="system">System</option>
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-            </select>
-          </label>
+        <div class="toolbar-row toolbar-secondary">
+          <div class="toolbar-group settings-grid">
+            <label for="themeSelect">
+              Theme
+              <select id="themeSelect">
+                <option value="system">System</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </label>
 
-          <label for="fontSelect">
-            Font
-            <select id="fontSelect">
-              <option value="serif">Serif</option>
-              <option value="friendly">Friendly</option>
-              <option value="classic">Classic</option>
-            </select>
-          </label>
+            <label for="fontSelect">
+              Font
+              <select id="fontSelect">
+                <option value="serif">Serif</option>
+                <option value="friendly">Friendly</option>
+                <option value="classic">Classic</option>
+              </select>
+            </label>
 
-          <label for="fontSizeRange">
-            Font Size <span id="fontSizeValue"></span>
-            <input id="fontSizeRange" type="range" min="14" max="32" step="1">
-          </label>
+            <label for="fontSizeRange">
+              Font Size <span id="fontSizeValue"></span>
+              <input id="fontSizeRange" type="range" min="14" max="32" step="1">
+            </label>
 
-          <label for="lineHeightRange">
-            Line Height <span id="lineHeightValue"></span>
-            <input id="lineHeightRange" type="range" min="1.35" max="2.2" step="0.05">
-          </label>
+            <label for="lineHeightRange">
+              Line Height <span id="lineHeightValue"></span>
+              <input id="lineHeightRange" type="range" min="1.35" max="2.2" step="0.05">
+            </label>
 
-          <label for="widthRange">
-            Text Width <span id="widthValue"></span>
-            <input id="widthRange" type="range" min="560" max="1080" step="20">
-          </label>
+            <label for="widthRange" class="width-control">
+              Text Width <span id="widthValue"></span>
+              <input id="widthRange" type="range" min="560" max="1080" step="20">
+            </label>
+          </div>
+        </div>
+
+        <div class="toolbar-row chapter-jump-wrap" id="chapterJumpWrap" hidden>
+          <label for="chapterJumpSelect">Jump to section</label>
+          <select id="chapterJumpSelect" aria-label="Jump to section"></select>
         </div>
       </header>
 

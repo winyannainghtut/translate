@@ -49,6 +49,8 @@
     lineHeightValue: document.getElementById("lineHeightValue"),
     widthRange: document.getElementById("widthRange"),
     widthValue: document.getElementById("widthValue"),
+    chapterJumpWrap: document.getElementById("chapterJumpWrap"),
+    chapterJumpSelect: document.getElementById("chapterJumpSelect"),
     chapterTitle: document.getElementById("chapterTitle"),
     chapterInfo: document.getElementById("chapterInfo"),
     content: document.getElementById("content"),
@@ -108,6 +110,18 @@
 
     els.closeSidebarBtn.addEventListener("click", () => {
       document.body.classList.remove("sidebar-open");
+    });
+
+    els.chapterJumpSelect.addEventListener("change", () => {
+      const headingId = els.chapterJumpSelect.value;
+      if (!headingId) return;
+      jumpToHeading(headingId);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        document.body.classList.remove("sidebar-open");
+      }
     });
 
     els.readerPanel.addEventListener("scroll", () => {
@@ -273,6 +287,7 @@
       });
 
       els.content.innerHTML = DOMPurify.sanitize(rendered);
+      populateChapterJumpOptions();
       const words = countWords(markdown);
       const minutes = Math.max(1, Math.round(words / 220));
       setChapterMeta(entry, `${words.toLocaleString()} words · ~${minutes} min read`);
@@ -287,8 +302,51 @@
       }
     } catch (error) {
       setChapterMeta(entry, String(error.message || error));
+      clearChapterJumpOptions();
       els.content.innerHTML = `<p class="empty-state">${escapeHtml(String(error.message || error))}</p>`;
     }
+  }
+
+  function populateChapterJumpOptions() {
+    const headings = [...els.content.querySelectorAll("h1[id], h2[id], h3[id], h4[id]")];
+    clearChapterJumpOptions();
+
+    if (!headings.length) return;
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Choose a section";
+    els.chapterJumpSelect.appendChild(placeholder);
+
+    for (const heading of headings) {
+      const option = document.createElement("option");
+      const level = Number(heading.tagName.replace("H", ""));
+      const indent = level > 1 ? " ".repeat((level - 1) * 2) : "";
+      option.value = heading.id;
+      option.textContent = `${indent}${heading.textContent.trim()}`;
+      els.chapterJumpSelect.appendChild(option);
+    }
+
+    els.chapterJumpWrap.hidden = false;
+    els.chapterJumpSelect.value = "";
+  }
+
+  function clearChapterJumpOptions() {
+    els.chapterJumpSelect.innerHTML = "";
+    els.chapterJumpWrap.hidden = true;
+  }
+
+  function jumpToHeading(headingId) {
+    const target = els.content.querySelector(`#${escapeCssIdent(headingId)}`);
+    if (!target) return;
+
+    const panelRect = els.readerPanel.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const topOffset = targetRect.top - panelRect.top + els.readerPanel.scrollTop - 64;
+    els.readerPanel.scrollTo({
+      top: Math.max(0, topOffset),
+      behavior: "smooth"
+    });
   }
 
   function setChapterMeta(entry, detail) {
@@ -424,5 +482,12 @@
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#39;");
+  }
+
+  function escapeCssIdent(value) {
+    if (window.CSS && typeof window.CSS.escape === "function") {
+      return window.CSS.escape(value);
+    }
+    return value.replace(/[^a-zA-Z0-9_-]/g, "\\$&");
   }
 })();
