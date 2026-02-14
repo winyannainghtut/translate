@@ -81,7 +81,39 @@ From Episode 2205 onwards, source chapters align 1:1 with episode numbers.
 - [x] **Episode 2256** (Source: 2256) - **Done**
 - [x] **Episode 2257** (Source: 2257) - **Done**
 - [x] **Episode 2258** (Source: 2258) - **Done**
-- [ ] **Episode 2259** (Source: 2259)
+- [x] **Episode 2259** (Source: 2259) - **Done**
+- [x] **Episode 2260** (Source: 2260) - **Done**
+- [x] **Episode 2261** (Source: 2261) - **Done**
+- [x] **Episode 2262** (Source: 2262) - **Done**
+- [x] **Episode 2263** (Source: 2263) - **Done**
+- [x] **Episode 2264** (Source: 2264) - **Done**
+- [x] **Episode 2265** (Source: 2265) - **Done**
+- [x] **Episode 2266** (Source: 2266) - **Done**
+- [x] **Episode 2267** (Source: 2267) - **Done**
+- [x] **Episode 2268** (Source: 2268) - **Done**
+- [x] **Episode 2269** (Source: 2269) - **Done**
+- [x] **Episode 2270** (Source: 2270) - **Done**
+- [x] **Episode 2271** (Source: 2271) - **Done**
+- [x] **Episode 2272** (Source: 2272) - **Done**
+- [x] **Episode 2273** (Source: 2273) - **Done**
+- [x] **Episode 2274** (Source: 2274) - **Done**
+- [x] **Episode 2275** (Source: 2275) - **Done**
+- [x] **Episode 2276** (Source: 2276) - **Done**
+- [x] **Episode 2277** (Source: 2277) - **Done**
+- [x] **Episode 2278** (Source: 2278) - **Done**
+- [x] **Episode 2279** (Source: 2279) - **Done**
+- [x] **Episode 2280** (Source: 2280) - **Done**
+- [x] **Episode 2281** (Source: 2281) - **Done**
+- [x] **Episode 2282** (Source: 2282) - **Done**
+- [x] **Episode 2283** (Source: 2283) - **Done**
+- [x] **Episode 2284** (Source: 2284) - **Done**
+- [x] **Episode 2285** (Source: 2285) - **Done**
+- [x] **Episode 2286** (Source: 2286) - **Done**
+- [x] **Episode 2287** (Source: 2287) - **Done**
+- [x] **Episode 2288** (Source: 2288) - **Done**
+- [x] **Episode 2289** (Source: 2289) - **Done**
+- [x] **Episode 2290** (Source: 2290) - **Done**
+- [ ] **Episode 2291** (Source: 2291)
 - [ ] ...
 - [ ] **Episode 2300** (Source: 2300)
 
