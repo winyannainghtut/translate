@@ -18,6 +18,8 @@
   --reader-line-height: 1.75;
   --reader-width: 780px;
   --reader-font: "Source Serif 4", Georgia, serif;
+  --reader-font-myanmar-serif: "Noto Serif Myanmar", "Padauk", "Myanmar Text", "Pyidaungsu", serif;
+  --reader-font-myanmar-sans: "Noto Sans Myanmar", "Padauk", "Myanmar Text", "Pyidaungsu", sans-serif;
   --progress-color: var(--accent);
 }
 

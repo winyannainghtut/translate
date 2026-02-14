@@ -22,7 +22,10 @@
   const fontMap = {
     serif: "'Source Serif 4', Georgia, serif",
     friendly: "'Atkinson Hyperlegible', 'Segoe UI', sans-serif",
-    classic: "'Alegreya', Georgia, serif"
+    classic: "'Alegreya', Georgia, serif",
+    myanmarSerif: "var(--reader-font-myanmar-serif)",
+    myanmarSans: "var(--reader-font-myanmar-sans)",
+    myanmarPadauk: "'Padauk', var(--reader-font-myanmar-sans)"
   };
 
   /* ====== State ====== */
